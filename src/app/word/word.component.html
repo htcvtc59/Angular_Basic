@@ -1,0 +1,47 @@
+<p>
+  word works!
+</p>
+<a href="#">Bootstrap</a>
+
+<h2 [hidden]="forgot">{{en}}</h2>
+<h2>{{vn}}</h2>
+<!-- Property Bindding -->
+<img src={{imageUrls}} />
+<img [src]="imageUrls" />
+<!-- Event bindding -->
+<button (click)="forgot = !forgot">Toggle forgot</button>
+<button (click)="toggleForgot()">Toggle forgot</button>
+
+<br>
+<br>
+<br>
+<input name="txt" type="text" placeholder="name" (keyup)="showEvent($event)" />
+<h1>{{name}}</h1>
+<!-- Two way bindding -->
+<br>
+<br>
+<input name="txt" type="text" placeholder="name" [(ngModel)]="name2" />
+<h1>{{name2}}</h1>
+<!-- Template reference variable -->
+<br>
+<br>
+<input  placeholder="name" [(ngModel)]="name22" #txtName />
+<h1>{{name22}}</h1>
+<code>{{ txtName.value | json }}</code>
+<code>{{ txtName | json }}</code>
+<!-- Style binding và class binding -->
+<br>
+<input  placeholder="name" [(ngModel)]="name22"  />
+<h1 [style.color]="name22.length % 2===0 ? 'red' : 'black' " >{{name22}}</h1>
+<h1 [style.color]="isHightlight ? 'red' : 'black' " >Hello</h1>
+
+<div [class]="isHightlight ? 'circle' : 'square'"></div>
+<!-- <div [class.circle]="isHightlight"></div> -->
+<div  [class.circle]="!isHightlight" [class.square]="isHightlight"></div>
+<!-- ngStyle -->
+<p [ngStyle]="currentStyle">NG Style</p>
+<!-- ngClass -->
+<!-- <p [ngClass]="{circle:true}"></p> -->
+<p [ngClass]="currentClass"></p>
+
+

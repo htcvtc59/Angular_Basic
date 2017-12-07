@@ -1,0 +1,38 @@
+<p *ngIf="isShow">
+  struct works!
+</p>
+<button (click)="isShow = !isShow">Toggle</button>
+<!-- ngFor -->
+<ul>
+  <li *ngFor="let sub of arrSub">
+    <p>{{'Sub:'+ sub}}</p>
+  </li>
+</ul>
+<!-- ngFor với mảng đối tượng -->
+<div *ngIf="isshowForm">
+  <input placeholder="en" [(ngModel)]="newen">
+  <input placeholder="vn" [(ngModel)]="newvn">
+  <button (click)="addnew()">Addd new</button>
+</div>
+<button (click)="isshowForm=true" *ngIf="!isshowForm">show from</button>
+
+<!-- Lọc mảng hiển thị -->
+<br>
+<select [(ngModel)]="filterStatus">
+  <option value="XEM_TAT_CA">XEM TAT CA</option>
+  <option value="XEM_TU_DA_NHO">XEM TU DA NHO</option>
+  <option value="XEM_CHUA_NHO">XEM CHUA NHO</option>
+</select>
+
+
+<div *ngFor="let word of arrWord">
+  <div class="word" *ngIf="getShowStatus(word.menorized)">
+    <!--filterStatus==='XEM_TAT_CA' || (filterStatus==='XEM_TU_DA_NHO' && word.menorized)||(filterStatus==='XEM_CHUA_NHO' && !word.menorized) -->
+    <h4 [ngStyle]="{color:word.menorized ? 'green':'red'}">{{word.en}}</h4>
+    <p>{{word.vn}}</p>
+    <button (click)="removeWord(word.id)">Remove</button>
+    <button (click)="word.menorized = !word.menorized">
+      {{word.menorized? 'chuathuoc':'dathuoc'}}
+    </button>
+  </div>
+</div>
